@@ -1,54 +1,75 @@
 package uniandes.edu.co.Proyecto.documentos;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 
 public class Cuenta {
     public enum TipoCuenta{
-    ahorro,corriente,afc
+        AHORRRO,
+        CORRIENTE,
+        AFC
     }
     public enum Estado{
-        activa,cerrada,desactivada
+        ACTIVA,
+        CERRADA,
+        DESACTIVADA
     }
+
     @Id
-    private int id;
+    private Integer id;
     private TipoCuenta tipo;
     private Estado estado;
+    private Integer saldo;
     private ArrayList<Operacion> operaciones;
-    public ArrayList<Operacion> getOperaciones() {
-        return operaciones;
-    }
-    public void setOperaciones(ArrayList<Operacion> operaciones) {
-        this.operaciones = operaciones;
-    }
-    
-    
-    public Cuenta(int id, TipoCuenta tipo, Estado estado, ArrayList<Operacion> operaciones) {
+
+
+    public Cuenta(Integer id, TipoCuenta tipo, Estado estado, Integer saldo, ArrayList<Operacion> operaciones) {
         this.id = id;
         this.tipo = tipo;
         this.estado = estado;
+        this.saldo = saldo;
         this.operaciones = operaciones;
     }
-    public int getId() {
+
+
+    public Integer getId() {
         return id;
     }
-    public void setId(int id) {
+
+    public void setId(Integer id) {
         this.id = id;
     }
+
     public TipoCuenta getTipo() {
         return tipo;
     }
+
     public void setTipo(TipoCuenta tipo) {
         this.tipo = tipo;
     }
+
     public Estado getEstado() {
         return estado;
     }
+
     public void setEstado(Estado estado) {
         this.estado = estado;
     }
-  
+
+    public Integer getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Integer saldo) {
+        this.saldo = saldo;
+    }
+
+    public ArrayList<Operacion> getOperaciones() {
+        return operaciones;
+    }
+
+    public void setOperaciones(ArrayList<Operacion> operaciones) {
+        this.operaciones = operaciones;
+    }
 }

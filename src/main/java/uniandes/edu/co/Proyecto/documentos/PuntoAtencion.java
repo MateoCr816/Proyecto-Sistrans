@@ -2,6 +2,8 @@ package uniandes.edu.co.Proyecto.documentos;
 
 import java.util.ArrayList;
 
+import org.springframework.data.annotation.Id;
+
 
 public class PuntoAtencion {
 
@@ -11,12 +13,23 @@ public class PuntoAtencion {
         DIGITAL
     }
 
+    @Id
+    private Integer id;
     private TipoPunto tipoPunto;
     private ArrayList<String> operaciones;
 
-    public PuntoAtencion(TipoPunto tipoPunto, ArrayList<String> operaciones) {
+    public PuntoAtencion(Integer id, TipoPunto tipoPunto, ArrayList<String> operaciones) {
+        this.id = id;
         this.tipoPunto = tipoPunto;
         this.operaciones = operaciones;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public TipoPunto getTipoPunto() {

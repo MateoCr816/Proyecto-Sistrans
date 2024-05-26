@@ -1,6 +1,5 @@
 package uniandes.edu.co.Proyecto.documentos;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,48 +8,65 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection="usuarios")
 
 public class Usuario {
-    public enum TipoPersona{
-        natural,juridica
+
+    @Id
+    private Integer id;
+    private enum TipoPersona{
+        NATURAL,
+        JURIDICA
     }
-    public enum TipoEmp{
-        gerentegeneral,gerenteoficina,cajero,atencionalcliente,noempleado
+    private enum Rol{
+        GERENTE_GENERAL,
+        GERENTE_OFICINA,
+        CAJERO,
+        CLIENTE
     }
     @Id
-    private int id;
     private TipoPersona tipo;
-    private TipoEmp tipoEmp;
+    private Rol rol;
     private ArrayList<Cuenta> cuentas;
  
-    public int getId() {
-        return id;
-    }
-    public Usuario(int id, TipoPersona tipo, TipoEmp tipoEmp, ArrayList<Cuenta> cuentas) {
+
+    public Usuario(int id, TipoPersona tipo, Rol rol, ArrayList<Cuenta> cuentas) {
         this.id = id;
         this.tipo = tipo;
-        this.tipoEmp = tipoEmp;
+        this.rol = rol;
         this.cuentas = cuentas;
     }
-    public void setId(int id) {
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
         this.id = id;
     }
+
     public TipoPersona getTipo() {
         return tipo;
     }
-    public ArrayList<Cuenta> getCuentas() {
-        return cuentas;
-    }
-    public void setCuentas(ArrayList<Cuenta> cuentas) {
-        this.cuentas = cuentas;
-    }
+
     public void setTipo(TipoPersona tipo) {
         this.tipo = tipo;
     }
-    public TipoEmp getTipoEmp() {
-        return tipoEmp;
+
+    public Rol getRol() {
+        return rol;
     }
-    public void setTipoEmp(TipoEmp tipoEmp) {
-        this.tipoEmp = tipoEmp;
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
+
+    public ArrayList<Cuenta> getCuentas() {
+        return cuentas;
+    }
+
+    public void setCuentas(ArrayList<Cuenta> cuentas) {
+        this.cuentas = cuentas;
+    }
+
+
     
-  
 }

@@ -14,12 +14,14 @@ public class Oficina {
     private String direccion;
     private Integer numeroPtosAtencion;
     private ArrayList<PuntoAtencion> puntosAtencion;
+    private String gerente;
 
-    public Oficina(Integer id, String nombre, String direccion, Integer numeroPtosAtencion) {
+    public Oficina(Integer id, String nombre, String direccion, Integer numeroPtosAtencion, String gerente) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.numeroPtosAtencion = numeroPtosAtencion;
+        this.gerente = gerente;
         }
 
     public Integer getId() {
@@ -51,6 +53,14 @@ public class Oficina {
     }
     public void setPuntos(ArrayList<PuntoAtencion> puntos) {
         this.puntosAtencion = puntos;
+    }
+
+    public String getGerente() {
+        return gerente;
+    }
+
+    public void setGerente(String gerente) {
+        this.gerente = gerente;
     }
    
 }

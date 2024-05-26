@@ -1,64 +1,93 @@
 package uniandes.edu.co.Proyecto.documentos;
-import java.util.List;
+
+
+import java.util.Date;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
 
 public class Operacion {
+
     public enum TipoOperacion{
-        abrir,cerrar,consignar,retirar,transferir
+        ABRIR_CUENTA,
+        CERRAR_CUENTA,
+        CONSIGNAR,
+        RETIRAR_DINERO,
+        TRANSFERIR_DINERO
     }
+
+    public enum PuestoAtencion{
+        ATENCION_PERSONALIZADA,
+        CAJERO_AUTOMATICO,
+        DIGITAL
+    }
+
     @Id
     private int id;
-    private int valor;
     private TipoOperacion tipo;
-    private Cuenta cuenta;
-    private String hora;
-    private String fecha;
-    public Operacion(int id, int valor,TipoOperacion tipo, Cuenta cuenta,String hora,String fecha ) {
+    private int valor;
+    private PuestoAtencion puestoAtencion;
+    private Integer hora;
+    private Date fecha;
+
+    public Operacion(int id, TipoOperacion tipo, int valor, PuestoAtencion puestoAtencion, Integer hora, Date fecha) {
         this.id = id;
-        this.valor = valor;
         this.tipo = tipo;
-        this.cuenta = cuenta;
+        this.valor = valor;
+        this.puestoAtencion = puestoAtencion;
         this.hora = hora;
         this.fecha = fecha;
     }
+
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
-    public int getValor() {
-        return valor;
-    }
-    public void setValor(int valor) {
-        this.valor = valor;
-    }
+
     public TipoOperacion getTipo() {
         return tipo;
     }
+
     public void setTipo(TipoOperacion tipo) {
         this.tipo = tipo;
     }
-    public Cuenta getCuenta() {
-        return cuenta;
+
+    public int getValor() {
+        return valor;
     }
-    public void setCuenta(Cuenta cuenta) {
-        this.cuenta = cuenta;
+
+    public void setValor(int valor) {
+        this.valor = valor;
     }
-    public String getHora() {
+
+    public PuestoAtencion getPuestoAtencion() {
+        return puestoAtencion;
+    }
+
+    public void setPuestoAtencion(PuestoAtencion puestoAtencion) {
+        this.puestoAtencion = puestoAtencion;
+    }
+
+
+    public Integer getHora() {
         return hora;
     }
-    public void setHora(String hora) {
+
+    public void setHora(Integer hora) {
         this.hora = hora;
     }
-    public String getFecha() {
+
+    public Date getFecha() {
         return fecha;
     }
-    public void setFecha(String fecha) {
+
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-   
-  
+
+    
+
 }
