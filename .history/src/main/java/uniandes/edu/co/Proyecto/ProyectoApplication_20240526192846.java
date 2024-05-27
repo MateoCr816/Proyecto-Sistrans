@@ -15,11 +15,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 
 import uniandes.edu.co.Proyecto.documentos.Cuenta;
-import uniandes.edu.co.Proyecto.documentos.Oficina;
 import uniandes.edu.co.Proyecto.documentos.Operacion;
-import uniandes.edu.co.Proyecto.documentos.PuntoAtencion;
 import uniandes.edu.co.Proyecto.documentos.Usuario;
-import uniandes.edu.co.Proyecto.repositories.OficinaRepository;
 import uniandes.edu.co.Proyecto.repositories.UsuarioRepository;
 
 @SpringBootApplication
@@ -34,28 +31,16 @@ public class ProyectoApplication {
 		return args -> {
 			ArrayList<Operacion> operaciones = new ArrayList<Operacion>();
 			ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
-			Usuario usuario = new Usuario(10, "Activa", "Gerente General", cuentas);
+			Usuario usuario = new Usuario(0, "Activa", "Gerente General", cuentas);
 
 			Query query = new Query();
 			query.addCriteria(Criteria.where("id").is(usuario.getId()));
 
 			List<Usuario> usuarios = mongoTemplate.find(query, Usuario.class);
-			
-			if(usuarios.isEmpty()){
-				System.out.println("Creando usuario "+usuario);
-				usuarioRepository.insert(usuario);
-			} else{
-				System.out.println(usuario+" ya hay un usuario con el id "+usuario.getId());
-			}
-		};
-	}
 
-	@Bean
-	CommandLineRunner runner(OficinaRepository oficinaRepository){
-		return args -> {
-			ArrayList<PuntoAtencion> puntos = new ArrayList<PuntoAtencion>();
-			Oficina oficina = new Oficina(0, "Julian", "Carrera_1", 3,"luis");
-			oficinaRepository.insert(oficina);
+			if(usuarios.isEmpty()){
+				usuarioRepository.insert(usuario);
+			}
 		};
 	}
 

@@ -1,0 +1,38 @@
+package uniandes.edu.co.Proyecto;
+
+import java.util.ArrayList;
+
+import javax.management.Query;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.mongodb.core.query.Criteria;
+
+import uniandes.edu.co.Proyecto.documentos.Cuenta;
+import uniandes.edu.co.Proyecto.documentos.Operacion;
+import uniandes.edu.co.Proyecto.documentos.Usuario;
+import uniandes.edu.co.Proyecto.repositories.UsuarioRepository;
+
+@SpringBootApplication
+public class ProyectoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ProyectoApplication.class, args);
+	}
+
+	@Bean
+	CommandLineRunner runner(UsuarioRepository usuarioRepository){
+		return args -> {
+			ArrayList<Operacion> operaciones = new ArrayList<Operacion>();
+			ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
+			Usuario usuario = new Usuario(0, "Activa", "Gerente General", cuentas);
+			usuarioRepository.insert(usuario);
+
+			Query query = new Query();
+			query.addCriteria(Criteria.where("id").is(usuario.getId()));
+		};
+	}
+
+}
