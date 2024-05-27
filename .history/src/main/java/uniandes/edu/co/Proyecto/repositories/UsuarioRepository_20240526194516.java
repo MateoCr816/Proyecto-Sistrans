@@ -5,14 +5,13 @@ import java.util.List;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
-import org.springframework.data.mongodb.repository.Update;
 
 import uniandes.edu.co.Proyecto.documentos.Usuario;
 
 public interface UsuarioRepository extends MongoRepository<Usuario, Integer>{
 
     public class RespuestaGrupo{
-            String ciudad;
+           String ciudad;
             int cantidad;
             public RespuestaGrupo(String ciudad, int cantidad) {
                 this.ciudad = ciudad;
@@ -33,10 +32,8 @@ public interface UsuarioRepository extends MongoRepository<Usuario, Integer>{
         }
 
     @Query("{_id: ?0}")
-        List<Usuario> buscarPorId(int id); 
-
-    @Query("{_id: ?0}")
-    @Update("{$push:{cuentas:{tipoCuenta:?1, estado:?2, saldo:?3, numero:?4}}}")
-    void aniadirCuentaAUsuario(int id_cuenta, String tipoCuenta, String estado, int saldo, int numero);
-
+        List<Usuario> buscarPorId(int id);
+        
+    @Aggregation(pipeline={"{$group:{_id:'$ciudad', cantidad:{$sum:1}}}","{$project:{'ciudad':'$_id',cantidad:1}}"})
+    List<RespuestaGrupo> darBaresPorCiudad();    
 }

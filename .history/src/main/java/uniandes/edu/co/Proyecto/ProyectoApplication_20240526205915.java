@@ -25,7 +25,7 @@ import uniandes.edu.co.Proyecto.repositories.OperacionRepository;
 import uniandes.edu.co.Proyecto.repositories.UsuarioRepository;
 
 @SpringBootApplication
-public class ProyectoApplication{
+public class ProyectoApplication implements CommandLineRunner{
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoApplication.class, args);
@@ -110,4 +110,16 @@ public class ProyectoApplication{
 			
 		};
 	}
+
+	@Override
+	public void run(String... args) throws Exception {
+
+		for(int i=0;i<=5;i++){
+
+		}
+
+
+		throw new UnsupportedOperationException("Unimplemented method 'run'");
+	}
+
 }

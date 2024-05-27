@@ -25,19 +25,19 @@ import uniandes.edu.co.Proyecto.repositories.OperacionRepository;
 import uniandes.edu.co.Proyecto.repositories.UsuarioRepository;
 
 @SpringBootApplication
-public class ProyectoApplication{
+public class ProyectoApplication implements CommandLineRunner{
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoApplication.class, args);
 	}
- 
-	@Bean
+
+	/*@Bean
 	CommandLineRunner runner(UsuarioRepository usuarioRepository, MongoTemplate mongoTemplate){
 		return args -> {
 			
 			ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
 
-			Usuario usuario = new Usuario(5, "Activa", "Gerente General", cuentas);
+			Usuario usuario = new Usuario(10, "Activa", "Gerente General", cuentas);
 
 			Query query = new Query();
 			query.addCriteria(Criteria.where("id").is(usuario.getId()));
@@ -51,15 +51,19 @@ public class ProyectoApplication{
 				System.out.println(usuario+" ya hay un usuario con el id "+usuario.getId());
 			}
 		};
-	}
+	}/* */
 
 	@Bean
-	CommandLineRunner runner2(UsuarioRepository usuarioRepository, CuentaRepository cuentaRepository, OperacionRepository operacionRepository, MongoTemplate mongoTemplate){
+	CommandLineRunner runner(UsuarioRepository usuarioRepository, CuentaRepository cuentaRepository, OperacionRepository operacionRepository, MongoTemplate mongoTemplate){
 		return args -> {
 
+			ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
+
+			Usuario usuario = new Usuario(10, "Activa", "Gerente General", cuentas);
+			
 			ArrayList<Operacion> operaciones = new ArrayList<Operacion>();
 
-			Cuenta cuenta = new Cuenta(0, "Ahorros", "Activa", 0, 12341234, operaciones);
+			Cuenta cuenta = new Cuenta(0, "Ahorros", "Activa", 0, operaciones);
 
 			Query query = new Query();
 			query.addCriteria(Criteria.where("id").is(0));
@@ -79,35 +83,17 @@ public class ProyectoApplication{
 
 			if(cuentas.isEmpty()){ 	
 				System.out.println("Creando cuenta del usuario "+cuenta.getId());
-				usuarioRepository.aniadirCuentaAUsuario(0, cuenta.getTipo(), cuenta.getEstado(), 0, cuenta.getNumero());
+				usuarioRepository.aniadirCuentaAUsuario(0, cuenta.getTipo(), cuenta.getEstado(), 0);
 			} else{
 				System.out.println("No se ha encontrado el usuario, poner id distinto a "+cuenta.getId());
 			}
 		};
 	}
 
-	@Bean
-	CommandLineRunner runner3(UsuarioRepository usuarioRepository, MongoTemplate mongoTemplate,OficinaRepository oficinaRepository){
-		return args -> {
-			ArrayList<Operacion> operaciones = new ArrayList<Operacion>();
-			ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
-			Usuario usuario = new Usuario(10, "Activa", "Gerente General", cuentas);
-
-			Query query = new Query();
-			query.addCriteria(Criteria.where("id").is(usuario.getId()));
-
-			List<Usuario> usuarios = mongoTemplate.find(query, Usuario.class);
-			
-			if(usuarios.isEmpty()){
-				System.out.println("Creando usuario "+usuario);
-				usuarioRepository.insert(usuario);
-			} else{
-				System.out.println(usuario+" ya hay un usuario con el id "+usuario.getId());
-			}
-			ArrayList<PuntoAtencion> puntos = new ArrayList<PuntoAtencion>();
-			Oficina oficina = new Oficina(0, "Julian", "Carrera_1", 3,puntos,"a");
-			oficinaRepository.insert(oficina);
-			
-		};
+	@Override
+	public void run(String... args) throws Exception {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'run'");
 	}
+
 }

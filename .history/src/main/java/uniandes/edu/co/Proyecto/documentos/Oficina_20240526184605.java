@@ -9,28 +9,25 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Oficina {
 
     @Id
-    private int id;
+    private Integer id;
     private String nombre;
     private String direccion;
-    private int numeroPtosAtencion;
-    
-    private String gerente;
+    private Integer numeroPtosAtencion;
     private ArrayList<PuntoAtencion> puntosAtencion;
+    private String gerente;
 
-
-    public Oficina(Integer id, String nombre, String direccion, Integer numeroPtosAtencion,
-            ArrayList<PuntoAtencion> puntosAtencion, String gerente) {
+    public Oficina(Integer id, String nombre, String direccion, Integer numeroPtosAtencion, String gerente) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.numeroPtosAtencion = numeroPtosAtencion;
-        this.puntosAtencion = puntosAtencion;
         this.gerente = gerente;
-    }
-    public int getId() {
+        }
+
+    public Integer getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public String getNombre() {
@@ -45,10 +42,10 @@ public class Oficina {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    public int getNumeroPtosAtencion() {
+    public Integer getNumeroPtosAtencion() {
         return numeroPtosAtencion;
     }
-    public void setNumeroPtosAtencion(int numeroPtosAtencion) {
+    public void setNumeroPtosAtencion(Integer numeroPtosAtencion) {
         this.numeroPtosAtencion = numeroPtosAtencion;
     }
     public ArrayList<PuntoAtencion> getPuntos() {
@@ -67,3 +64,4 @@ public class Oficina {
     }
    
 }
+

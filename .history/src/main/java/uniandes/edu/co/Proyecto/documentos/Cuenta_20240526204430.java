@@ -57,14 +57,6 @@ public class Cuenta {
         this.saldo = saldo;
     }
 
-    public Integer getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Integer saldo) {
-        this.saldo = numero;
-    }
-
     public ArrayList<Operacion> getOperaciones() {
         return operaciones;
     }

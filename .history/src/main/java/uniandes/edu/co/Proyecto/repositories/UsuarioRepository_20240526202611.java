@@ -33,10 +33,13 @@ public interface UsuarioRepository extends MongoRepository<Usuario, Integer>{
         }
 
     @Query("{_id: ?0}")
-        List<Usuario> buscarPorId(int id); 
+        List<Usuario> buscarPorId(int id);
+        
+    @Aggregation(pipeline={"{$group:{_id:'$ciudad', cantidad:{$sum:1}}}","{$project:{'ciudad':'$_id',cantidad:1}}"})
+    List<RespuestaGrupo> darBaresPorCiudad();    
 
     @Query("{_id: ?0}")
-    @Update("{$push:{cuentas:{tipoCuenta:?1, estado:?2, saldo:?3, numero:?4}}}")
-    void aniadirCuentaAUsuario(int id_cuenta, String tipoCuenta, String estado, int saldo, int numero);
+    @Update("{$push:{cuentas:{tipoCuenta:?1, estado:?2, saldo:?3}}}")
+    void aniadirCuentaAUsuario(int id_cuenta, String tipoCuenta, String estado, int saldo);
 
 }

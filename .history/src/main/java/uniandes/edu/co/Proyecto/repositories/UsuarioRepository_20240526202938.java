@@ -36,7 +36,7 @@ public interface UsuarioRepository extends MongoRepository<Usuario, Integer>{
         List<Usuario> buscarPorId(int id); 
 
     @Query("{_id: ?0}")
-    @Update("{$push:{cuentas:{tipoCuenta:?1, estado:?2, saldo:?3, numero:?4}}}")
-    void aniadirCuentaAUsuario(int id_cuenta, String tipoCuenta, String estado, int saldo, int numero);
+    @Update("{$push:{cuentas:{tipoCuenta:?1, estado:?2, saldo:?3}}}")
+    void aniadirCuentaAUsuario(int id_cuenta, String tipoCuenta, String estado, int saldo);
 
 }

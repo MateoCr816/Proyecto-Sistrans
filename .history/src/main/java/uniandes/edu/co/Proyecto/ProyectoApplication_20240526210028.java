@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators.Log;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
@@ -25,7 +26,7 @@ import uniandes.edu.co.Proyecto.repositories.OperacionRepository;
 import uniandes.edu.co.Proyecto.repositories.UsuarioRepository;
 
 @SpringBootApplication
-public class ProyectoApplication{
+public class ProyectoApplication implements CommandLineRunner{
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoApplication.class, args);
@@ -110,4 +111,17 @@ public class ProyectoApplication{
 			
 		};
 	}
+
+	@Override
+	public void run(String... args) throws Exception {
+
+		for(int i=0;i<=5;i++){
+			Log.info("Count =" +i);
+
+		}
+
+
+		throw new UnsupportedOperationException("Unimplemented method 'run'");
+	}
+
 }
