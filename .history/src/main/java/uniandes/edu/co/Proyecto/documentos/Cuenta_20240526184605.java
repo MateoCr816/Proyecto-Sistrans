@@ -5,16 +5,26 @@ import org.springframework.data.annotation.Id;
 
 
 public class Cuenta {
+    public enum TipoCuenta{
+        AHORRRO,
+        CORRIENTE,
+        AFC
+    }
+    public enum Estado{
+        ACTIVA,
+        CERRADA,
+        DESACTIVADA
+    }
 
     @Id
     private Integer id;
-    private String tipo;
-    private String estado;
+    private TipoCuenta tipo;
+    private Estado estado;
     private Integer saldo;
     private ArrayList<Operacion> operaciones;
 
 
-    public Cuenta(Integer id, String tipo, String estado, Integer saldo, ArrayList<Operacion> operaciones) {
+    public Cuenta(Integer id, TipoCuenta tipo, Estado estado, Integer saldo, ArrayList<Operacion> operaciones) {
         this.id = id;
         this.tipo = tipo;
         this.estado = estado;
@@ -31,19 +41,19 @@ public class Cuenta {
         this.id = id;
     }
 
-    public String getTipo() {
+    public TipoCuenta getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoCuenta tipo) {
         this.tipo = tipo;
     }
 
-    public String getEstado() {
+    public Estado getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Estado estado) {
         this.estado = estado;
     }
 

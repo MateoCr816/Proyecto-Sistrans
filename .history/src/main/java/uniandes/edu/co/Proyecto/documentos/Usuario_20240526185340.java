@@ -16,7 +16,7 @@ public class Usuario {
     private ArrayList<Cuenta> cuentas;
  
 
-    public Usuario(int id, String tipo, String rol, ArrayList<Cuenta> cuentas) {
+    public Usuario(int id, TipoPersona tipo, Rol rol, ArrayList<Cuenta> cuentas) {
         this.id = id;
         this.tipo = tipo;
         this.rol = rol;
@@ -32,19 +32,19 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getTipo() {
+    public TipoPersona getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoPersona tipo) {
         this.tipo = tipo;
     }
 
-    public String getRol() {
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 

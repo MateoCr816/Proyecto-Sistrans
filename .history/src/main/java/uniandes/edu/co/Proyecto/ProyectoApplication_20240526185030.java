@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import uniandes.edu.co.Proyecto.documentos.Cuenta;
-import uniandes.edu.co.Proyecto.documentos.Operacion;
 import uniandes.edu.co.Proyecto.documentos.Usuario;
 import uniandes.edu.co.Proyecto.repositories.UsuarioRepository;
 
@@ -22,9 +21,10 @@ public class ProyectoApplication {
 	@Bean
 	CommandLineRunner runner(UsuarioRepository usuarioRepository){
 		return args -> {
-			ArrayList<Operacion> operaciones = new ArrayList<Operacion>();
 			ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
-			Usuario usuario = new Usuario(0, "Activa", "Gerente General", cuentas);
+			Cuenta cuenta = new Cuenta(null, null, null, null, null);
+			cuentas.add(cuenta);
+			Usuario usuario = new Usuario(0, null, null, cuentas);
 			usuarioRepository.insert(usuario);
 		};
 	}

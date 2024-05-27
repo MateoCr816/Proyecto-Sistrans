@@ -8,15 +8,29 @@ import org.springframework.data.annotation.Id;
 
 public class Operacion {
 
+    public enum TipoOperacion{
+        ABRIR_CUENTA,
+        CERRAR_CUENTA,
+        CONSIGNAR,
+        RETIRAR_DINERO,
+        TRANSFERIR_DINERO
+    }
+
+    public enum PuestoAtencion{
+        ATENCION_PERSONALIZADA,
+        CAJERO_AUTOMATICO,
+        DIGITAL
+    }
+
     @Id
     private int id;
-    private String tipo;
+    private TipoOperacion tipo;
     private int valor;
-    private String puestoAtencion;
+    private PuestoAtencion puestoAtencion;
     private Integer hora;
     private Date fecha;
 
-    public Operacion(int id, String tipo, int valor, String puestoAtencion, Integer hora, Date fecha) {
+    public Operacion(int id, TipoOperacion tipo, int valor, PuestoAtencion puestoAtencion, Integer hora, Date fecha) {
         this.id = id;
         this.tipo = tipo;
         this.valor = valor;
@@ -33,11 +47,11 @@ public class Operacion {
         this.id = id;
     }
 
-    public String getTipo() {
+    public TipoOperacion getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoOperacion tipo) {
         this.tipo = tipo;
     }
 
@@ -49,11 +63,11 @@ public class Operacion {
         this.valor = valor;
     }
 
-    public String getPuestoAtencion() {
+    public PuestoAtencion getPuestoAtencion() {
         return puestoAtencion;
     }
 
-    public void setPuestoAtencion(String puestoAtencion) {
+    public void setPuestoAtencion(PuestoAtencion puestoAtencion) {
         this.puestoAtencion = puestoAtencion;
     }
 

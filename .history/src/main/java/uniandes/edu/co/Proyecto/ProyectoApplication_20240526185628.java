@@ -24,6 +24,8 @@ public class ProyectoApplication {
 		return args -> {
 			ArrayList<Operacion> operaciones = new ArrayList<Operacion>();
 			ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
+			Cuenta cuenta = new Cuenta(null, null, null, null, operaciones);
+			cuentas.add(cuenta);
 			Usuario usuario = new Usuario(0, "Activa", "Gerente General", cuentas);
 			usuarioRepository.insert(usuario);
 		};
