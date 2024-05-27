@@ -214,8 +214,7 @@ public class ProyectoApplication implements CommandLineRunner{
 
 		//añadir operacion
 
-		//Operacion operacion = new Operacion(0, null, 0, null, null, null);
-		//usuarioRepository.aniadirOperacion(11, 12341234, "Retirar", 0, "0", 0, "01/01/20001");
+		usuarioRepository.
 
 		//Consultar cuentas
 

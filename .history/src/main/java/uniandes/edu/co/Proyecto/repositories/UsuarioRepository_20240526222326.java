@@ -1,6 +1,5 @@
 package uniandes.edu.co.Proyecto.repositories;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.mongodb.repository.Aggregation;
@@ -47,5 +46,5 @@ public interface UsuarioRepository extends MongoRepository<Usuario, Integer>{
 
     @Query("{ '_id': ?0, 'numero': ?1 }")
     @Update("{$push:{operaciones:{tipo:?2, valor:?3,puestoAtencion:?4,hora:?5,fecha:?6}}}")       
-    void aniadirOperacion(int usuarioId,int cuentaid, String tipo, int valor,String puestoAtencion,int hora,String fecha);
+    void aniadirOperacion(int usuarioId,int cuentaid, String tipo, int valor,String puestoAtencion,int hora,Date fecha);
 }

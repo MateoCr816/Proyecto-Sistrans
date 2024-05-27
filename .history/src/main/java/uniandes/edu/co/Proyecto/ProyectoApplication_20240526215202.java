@@ -2,8 +2,6 @@ package uniandes.edu.co.Proyecto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -209,27 +207,6 @@ public class ProyectoApplication implements CommandLineRunner{
 
 		//cambiar estado
 
-		//usuarioRepository.updateCuentaEstado(11, 12341234, "Cerrada");
-		//obtenerTodasLasCuentas();
-
-		//añadir operacion
-
-		//Operacion operacion = new Operacion(0, null, 0, null, null, null);
-		//usuarioRepository.aniadirOperacion(11, 12341234, "Retirar", 0, "0", 0, "01/01/20001");
-
-		//Consultar cuentas
-
-		//List<Cuenta> cuentas = obtenerTodasLasCuentas();
-        //cuentas.forEach(cuenta -> System.out.println("Numero: " + cuenta.getNumero()));
-		
+		usuarioRepository.updateEstadoCuenta1(11, 12341234);
 	};
-
-	public List<Cuenta> obtenerTodasLasCuentas() {
-        return usuarioRepository.findAll()
-                .stream()
-                .flatMap(usuario -> usuario.getCuentas().stream())
-                .collect(Collectors.toList());
-    }
-
-	
 }

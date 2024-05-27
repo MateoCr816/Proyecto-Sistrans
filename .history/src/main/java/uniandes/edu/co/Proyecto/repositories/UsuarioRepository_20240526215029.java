@@ -1,6 +1,5 @@
 package uniandes.edu.co.Proyecto.repositories;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.mongodb.repository.Aggregation;
@@ -8,7 +7,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.Update;
 
-import uniandes.edu.co.Proyecto.documentos.Operacion;
 import uniandes.edu.co.Proyecto.documentos.Usuario;
 
 public interface UsuarioRepository extends MongoRepository<Usuario, Integer>{
@@ -41,11 +39,8 @@ public interface UsuarioRepository extends MongoRepository<Usuario, Integer>{
     @Update("{$push:{cuentas:{tipoCuenta:?1, estado:?2, saldo:?3, numero:?4}}}")
     void aniadirCuentaAUsuario(int id_cuenta, String tipoCuenta, String estado, int saldo, int numero);
 
-    @Query("{ '_id': ?0, 'cuentas.numero': ?1 }")
-    @Update("{ '$set': { 'cuentas.$.estado': ?2 } }")
-    void updateCuentaEstado(int usuarioId, int cuentaid, String nuevoEstado);
+    @Query("{ '_id': ?0 }")
+    @Update("{ '$set': { 'estado': ?2 } }")
+    void updateEstadoCuenta(int id_usuario, int numero);
 
-    @Query("{ '_id': ?0, 'numero': ?1 }")
-    @Update("{$push:{operaciones:{tipo:?2, valor:?3,puestoAtencion:?4,hora:?5,fecha:?6}}}")       
-    void aniadirOperacion(int usuarioId,int cuentaid, String tipo, int valor,String puestoAtencion,int hora,String fecha);
 }

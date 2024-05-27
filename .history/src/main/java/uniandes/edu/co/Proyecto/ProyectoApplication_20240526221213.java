@@ -212,15 +212,8 @@ public class ProyectoApplication implements CommandLineRunner{
 		//usuarioRepository.updateCuentaEstado(11, 12341234, "Cerrada");
 		//obtenerTodasLasCuentas();
 
-		//añadir operacion
-
-		//Operacion operacion = new Operacion(0, null, 0, null, null, null);
-		//usuarioRepository.aniadirOperacion(11, 12341234, "Retirar", 0, "0", 0, "01/01/20001");
-
-		//Consultar cuentas
-
-		//List<Cuenta> cuentas = obtenerTodasLasCuentas();
-        //cuentas.forEach(cuenta -> System.out.println("Numero: " + cuenta.getNumero()));
+		List<Cuenta> cuentas = obtenerTodasLasCuentas();
+        cuentas.forEach(cuenta -> System.out.println(cuenta));
 		
 	};
 
