@@ -13,7 +13,7 @@ public interface OficinaRepository extends MongoRepository<Oficina, Integer>{
     void anadirPuntoAtencion(int id_oficina, String tipoPunto, String operaciones, Integer idPA);
 
     @Query("{_id: ?0}")
-    @Update("{$pull: { 'puntosAtencion': { 'idPA': ?1 } }}")
+    @Update("{$pull: { '_id:?0': { '_id': ?1 } }}")
     void borrarPunto(int id_oficina,int idPA);
 
 }

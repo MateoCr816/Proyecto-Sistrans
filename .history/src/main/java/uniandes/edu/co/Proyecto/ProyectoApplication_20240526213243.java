@@ -128,7 +128,7 @@ public class ProyectoApplication implements CommandLineRunner{
 */
 	@Override
 	public void run(String... args) throws Exception {
-/* 
+
 		//crear usuario
 			
 		ArrayList<Cuenta> cuentas2 = new ArrayList<Cuenta>();
@@ -178,12 +178,11 @@ public class ProyectoApplication implements CommandLineRunner{
 
 		//crear oficina
 
-		ArrayList<Operacion> operaciones = new ArrayList<Operacion>();
-		ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
-		Usuario usuario = new Usuario(10, "Activa", "Gerente General", cuentas);
+		ArrayList<Cuenta> cuentasOficina = new ArrayList<Cuenta>();
+		Usuario usuario = new Usuario(10, "Activa", "Gerente General", cuentasOficina);
 
 		Query query = new Query();
-		query.addCriteria(Criteria.where("id").is(usuario.getId()));
+		query.addCriteria(Criteria.where("id").is(usuarioOficina.getId()));
 
 		List<Usuario> usuarios = mongoTemplate.find(query, Usuario.class);
 		
@@ -194,16 +193,13 @@ public class ProyectoApplication implements CommandLineRunner{
 			System.out.println(usuario+" ya hay un usuario con el id "+usuario.getId());
 		}
 		ArrayList<PuntoAtencion> puntos = new ArrayList<PuntoAtencion>();
-		Oficina oficina = new Oficina(2, "Julian", "Carrera_1", 3,puntos,"a");
+		Oficina oficina = new Oficina(0, "Julian", "Carrera_1", 3,puntos,"a");
 		oficinaRepository.insert(oficina);	
 
+
 		//Crear punto de atencion
-*/
-		//oficinaRepository.anadirPuntoAtencion(1, "Digital", "operaciones", 1);
 
-		//Borrar punto de atencion
-
-		oficinaRepository.borrarPunto(1, 1);
+		oficinaRepository.anadirPuntoAtencion(0, "Digital", "operaciones", 1);
 
 	};
 }

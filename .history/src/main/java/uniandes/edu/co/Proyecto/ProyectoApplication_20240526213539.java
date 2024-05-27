@@ -194,16 +194,13 @@ public class ProyectoApplication implements CommandLineRunner{
 			System.out.println(usuario+" ya hay un usuario con el id "+usuario.getId());
 		}
 		ArrayList<PuntoAtencion> puntos = new ArrayList<PuntoAtencion>();
-		Oficina oficina = new Oficina(2, "Julian", "Carrera_1", 3,puntos,"a");
+		Oficina oficina = new Oficina(0, "Julian", "Carrera_1", 3,puntos,"a");
 		oficinaRepository.insert(oficina);	
+*/
 
 		//Crear punto de atencion
-*/
-		//oficinaRepository.anadirPuntoAtencion(1, "Digital", "operaciones", 1);
 
-		//Borrar punto de atencion
-
-		oficinaRepository.borrarPunto(1, 1);
+		oficinaRepository.anadirPuntoAtencion(0, "Digital", "operaciones", 1);
 
 	};
 }

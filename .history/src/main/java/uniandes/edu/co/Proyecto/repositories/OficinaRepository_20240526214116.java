@@ -12,8 +12,4 @@ public interface OficinaRepository extends MongoRepository<Oficina, Integer>{
     @Update("{$push:{puntosAtencion:{tipo:?1, operaciones:?2, idPA:?3}}}")
     void anadirPuntoAtencion(int id_oficina, String tipoPunto, String operaciones, Integer idPA);
 
-    @Query("{_id: ?0}")
-    @Update("{$pull: { 'puntosAtencion': { 'idPA': ?1 } }}")
-    void borrarPunto(int id_oficina,int idPA);
-
 }

@@ -7,17 +7,21 @@ import org.springframework.data.annotation.Id;
 
 public class PuntoAtencion {
 
+    private enum TipoPunto {
+        ATENCION_PERSONALIZADA,
+        CAJERO_AUTOMATICO,
+        DIGITAL
+    }
+
     @Id
     private Integer id;
-    private String tipoPunto;
-    private String operaciones;
-    private Integer idPA;
+    private TipoPunto tipoPunto;
+    private ArrayList<String> operaciones;
 
-    public PuntoAtencion(Integer id, String tipoPunto, Integer idPA, String operaciones) {
+    public PuntoAtencion(Integer id, TipoPunto tipoPunto, ArrayList<String> operaciones) {
         this.id = id;
         this.tipoPunto = tipoPunto;
         this.operaciones = operaciones;
-        this.idPA = idPA;
     }
 
     public Integer getId() {
@@ -28,27 +32,19 @@ public class PuntoAtencion {
         this.id = id;
     }
 
-    public String getTipoPunto() {
+    public TipoPunto getTipoPunto() {
         return tipoPunto;
     }
 
-    public void setTipoPunto(String tipoPunto) {
+    public void setTipoPunto(TipoPunto tipoPunto) {
         this.tipoPunto = tipoPunto;
     }
 
-    public String getOperaciones() {
+    public ArrayList<String> getOperaciones() {
         return operaciones;
     }
 
-    public void setOperaciones(String operaciones) {
+    public void setOperaciones(ArrayList<String> operaciones) {
         this.operaciones = operaciones;
-    }
-
-    public Integer getIdPa() {
-        return idPA;
-    }
-
-    public void setIdPa(Integer idPA) {
-        this.idPA = idPA;
     }
 }

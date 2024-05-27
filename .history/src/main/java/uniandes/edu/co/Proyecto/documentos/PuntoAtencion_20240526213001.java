@@ -48,7 +48,7 @@ public class PuntoAtencion {
         return idPA;
     }
 
-    public void setIdPa(Integer idPA) {
-        this.idPA = idPA;
+    public void setidPa(String operaciones) {
+        this.operaciones = operaciones;
     }
 }

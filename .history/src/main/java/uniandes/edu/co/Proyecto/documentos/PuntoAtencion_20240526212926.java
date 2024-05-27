@@ -44,11 +44,11 @@ public class PuntoAtencion {
         this.operaciones = operaciones;
     }
 
-    public Integer getIdPa() {
+    public String getIdPa() {
         return idPA;
     }
 
-    public void setIdPa(Integer idPA) {
-        this.idPA = idPA;
+    public void setOperaciones(String operaciones) {
+        this.operaciones = operaciones;
     }
 }

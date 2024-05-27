@@ -6,18 +6,16 @@ import org.springframework.data.annotation.Id;
 
 
 public class PuntoAtencion {
-
+    
     @Id
     private Integer id;
     private String tipoPunto;
     private String operaciones;
-    private Integer idPA;
 
-    public PuntoAtencion(Integer id, String tipoPunto, Integer idPA, String operaciones) {
+    public PuntoAtencion(Integer id, String tipoPunto, String operaciones) {
         this.id = id;
         this.tipoPunto = tipoPunto;
         this.operaciones = operaciones;
-        this.idPA = idPA;
     }
 
     public Integer getId() {
@@ -42,13 +40,5 @@ public class PuntoAtencion {
 
     public void setOperaciones(String operaciones) {
         this.operaciones = operaciones;
-    }
-
-    public Integer getIdPa() {
-        return idPA;
-    }
-
-    public void setIdPa(Integer idPA) {
-        this.idPA = idPA;
     }
 }

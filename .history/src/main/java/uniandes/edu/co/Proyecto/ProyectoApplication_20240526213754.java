@@ -175,7 +175,7 @@ public class ProyectoApplication implements CommandLineRunner{
 		} else{
 			System.out.println("No se ha encontrado el usuario, poner id distinto a "+cuenta.getId());
 		}	
-
+*/
 		//crear oficina
 
 		ArrayList<Operacion> operaciones = new ArrayList<Operacion>();
@@ -198,12 +198,8 @@ public class ProyectoApplication implements CommandLineRunner{
 		oficinaRepository.insert(oficina);	
 
 		//Crear punto de atencion
-*/
-		//oficinaRepository.anadirPuntoAtencion(1, "Digital", "operaciones", 1);
 
-		//Borrar punto de atencion
-
-		oficinaRepository.borrarPunto(1, 1);
+		//oficinaRepository.anadirPuntoAtencion(0, "Digital", "operaciones", 1);
 
 	};
 }

@@ -201,8 +201,8 @@ public class ProyectoApplication implements CommandLineRunner{
 */
 		//oficinaRepository.anadirPuntoAtencion(1, "Digital", "operaciones", 1);
 
-		//Borrar punto de atencion
 
+		//
 		oficinaRepository.borrarPunto(1, 1);
 
 	};
